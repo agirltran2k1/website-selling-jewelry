@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "SanPham";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+@*@using Nhom5_ShopBanDoTrangSuc.Models;
+@model List<TRANGSUC>*@
+@model PagedList.IPagedList<Nhom5_ShopBanDoTrangSuc.Models.TRANGSUC>
+@using PagedList.Mvc;
+
+<h2 style="font-family:Cambria; text-align:center">SẢN PHẨM</h2>
+<br />
+<table class="table" style="font-family:Cambria">
+    <thead>
+         <tr>
+            <td colspan="8"><a href="@Url.Action("themSP")">THÊM MỚI</a></td>
+             <td></td>
+        </tr>
+        <tr>
+            <th scope="col">Mã SP</th>
+            <th scope="col">Mã Loại</th>
+            <th scope="col">Tên SP</th>
+            <th scope="col">Giá</th>
+            <th scope="col">Hình Ảnh</th>
+            <th scope="col">Ngày Đăng</th>
+            <th scope="col">Mô Tả</th>
+            <th>
+            </th>
+            <th></th>
+    
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <th>@i.MATRANGSUC</th>
+                 <th>@i.MALOAI</th>
+                 <th>@i.TENTRANGSUC</th>
+                 <th>@i.GIA</th>
+                 <th><img src="../HinhAnh/@i.HINHANH" width="50px" height="50px"/></th>
+                 <th>@i.NGAYDANG</th>
+                 <th>@i.MOTA</th>
+               
+                <th ><a href="@Url.Action("xoaSP", new {masp=@i.MATRANGSUC })"><input class="btn-ad-xoa-kh" type="submit" value="Xóa"/></a></th>
+                <th ><a href="@Url.Action("suaSP", new {masp=@i.MATRANGSUC })"><input class="btn-ad-sua-kh" type="submit" value="Sửa"/></a></th>
+                @*<th ><input class="btn-ad-sua-kh" style="background-color:#f00;" type="submit" value="BAN"/></th>*@
+                
+            </tr>
+        }
+       
+    </tbody>
+</table>
+<br />
+<br />
+<center>
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+ <a style="text-align:right">@Html.PagedListPager(Model, page => Url.Action("SanPham",
+    new { page }))</a>
+    </center>

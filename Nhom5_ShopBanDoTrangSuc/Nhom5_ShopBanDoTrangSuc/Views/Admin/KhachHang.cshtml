@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "KhachHang";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+@using Nhom5_ShopBanDoTrangSuc.Models;
+@model List<TAIKHOAN>
+
+<h2 style="font-family:Cambria; text-align:center">KHÁCH HÀNG</h2>
+<br />
+<table class="table" style="font-family:Cambria">
+    <thead>
+        @* <tr>
+            <td colspan="8"><a href="@Url.Action("themTK")">THÊM MỚI</a></td>
+        </tr>*@
+        <tr>
+            <th scope="col">Tài Khoản</th>
+            <th scope="col">Mật Khẩu</th>
+            <th scope="col">Họ Tên</th>
+            <th scope="col">Email</th>
+            @*<th scope="col">Phân Quyền</th>*@
+            <th></th>
+            <th></th>
+            @*<th scope="col">Đã Xóa</th>*@
+    
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var i in Model)
+        {
+            <tr>
+                
+                 <th>@i.UNAME</th>
+                 <th>@i.PASS</th>
+                 <th>@i.FULL_NAME</th>
+                 <th>@i.EMAIL_ADDRESS</th>
+                 @*<th>@i.PHAN_QUYEN</th>*@
+                 @*<th>@i.DAXOA</th>*@
+               
+                <th ><a href="@Url.Action("xoaTaiKhoan", new {matk=@i.UNAME })"><input class="btn-ad-xoa-kh" type="submit" value="Xóa"/></a></th>
+                <th ><a href="@Url.Action("suaTKKH", new {matk=@i.UNAME })"><input class="btn-ad-sua-kh" type="submit" value="Sửa"/></a></th>
+                @*<th ><input class="btn-ad-sua-kh" style="background-color:#f00;" type="submit" value="BAN"/></th>*@
+                
+            </tr>
+        }
+       
+    </tbody>
+</table>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br /><br />
+<br />
+<br />
+<br />
+<br />
+<br />

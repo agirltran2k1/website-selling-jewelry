@@ -1,0 +1,74 @@
+﻿@using Nhom5_ShopBanDoTrangSuc.Models;
+
+@{
+    ViewBag.Title = "chuanBiDatHang";
+    Layout = "~/Views/Shared/SanPham.cshtml";
+}
+
+<h2 style="text-align:center; font-family:Cambria">THÔNG TIN ĐẶT HÀNG</h2>
+@{TAIKHOAN tk = Session["ss_user"] as TAIKHOAN;
+  List<Item> gioHang = Session["gh"] as List<Item>;  
+}
+<div class="container" style="font-family:Cambria; text-align:center">
+    @if (Session["gh"] == null)
+    {
+        <div class="text-danger">
+            @ViewBag.thongBao
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+
+            <br />
+        </div>
+    }
+    else
+    {
+        using (Html.BeginForm("xacNhanDatHang", "gioHang"))
+        {
+<center><table>
+            
+            <tr>
+                <td>Tên KH: </td>
+                <td>@tk.FULL_NAME</td>
+                <br />
+            </tr>
+            @foreach (Item it in gioHang)
+            {
+<tr>
+    <td><br />Tên SP: </td>
+                    <td><br />@it.tensp</td>
+    <td><br />&nbsp&nbsp&nbsp Số Lượng:&nbsp&nbsp&nbsp</td>
+                    <td><br />@it.soluong</td>
+                </tr>
+            }
+            <tr>
+                <td><br />Ngày Đặt: </td>
+                <td>
+                    <br />@DateTime.Now.ToString("dd/MM/yyyy")</td>
+            </tr>
+            <tr>
+                <td><br />Địa Chỉ: </td>
+                <td><br />@Html.TextBox("txtDiaChi", "", new { @type = "string" })</td>
+            </tr>
+            <tr>
+                <td><br />Tổng Tiền: </td>
+                <td><br />@string.Format("{0:N0} VND", @gioHang.Sum(n => n.thanhtien))</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>    <br />    <br />    <br />
+                    <input type="submit" value="XÁC NHẬN ĐẶT HÀNG" class="btn btn-success" /> </td>
+                
+            </tr>
+        </table>
+    </center>
+        }
+        <br />    <br />    <br />    <br />
+        <div class="text-danger">
+            @ViewBag.thongBao2
+        </div>
+    }
+</div>
+

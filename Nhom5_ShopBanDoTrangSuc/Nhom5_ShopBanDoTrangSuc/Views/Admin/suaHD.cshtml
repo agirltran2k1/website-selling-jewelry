@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "suaHD";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+@using Nhom5_ShopBanDoTrangSuc.Models;
+@model HOADON
+<div class="container-fluid login-banner" style="font-family:Cambria">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-9">
+                <form action="@Url.Action("xLySuaHD", new {mahd=@Model.MAHD })" method="post">
+                    <div class="container login-table">
+                        <h1 style="text-align:center">XỬ LÝ HÓA ĐƠN</h1>
+                        <hr />
+                           @*<label for="makhachhang"><b>Mã Khách hàng</b></label>
+                        <input type="text" name="makhachhang" value="@Model.MATAIKHOAN"  required />*@
+                       @* <label for="username"><b>Tài Khoản</b></label>
+                        <input type="text" name="username" value="@Model.UNAME" required />*@
+                        <label for="tinhtrang"><b>Tình Trạng</b></label>
+                        <br />
+                        <select name="tinhtrang" id="tinhtrang" style="width:100px">
+                             <option value="Đang xử lý">Đang xử lý</option>
+                            <option value="Đang giao">Đang giao</option>
+                         </select>
+                        <br />
+                        <br />
+                        <label for="ngaygiao"><b>Ngày Giao</b></label>
+                        <input type="date" value="getdate" name="ngaygiao" required />    
+                       
+                        <input type="submit" value="SAVE" />
+                    </div>
+                </form>
+                </div>
+                 
+            </div>
+        </div>
+    </div>

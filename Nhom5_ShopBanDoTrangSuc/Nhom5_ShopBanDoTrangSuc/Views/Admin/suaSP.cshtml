@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "suaSP";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+@using Nhom5_ShopBanDoTrangSuc.Models;
+@model TRANGSUC
+
+
+<div class="container-fluid login-banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-9">
+                <form action="@Url.Action("XlySuaSP", new {masp=@Model.MATRANGSUC })" method="post">
+                    <div class="container login-table" style="font-family:Cambria">
+                        <h1 style="text-align:center">CẬP NHẬT SẢN PHẨM</h1>
+                        <hr />
+
+                        @*<label for="matrangsuc"><b>Mã Trang Sức</b></label>
+                        <input type="text" name="matrangsuc" value="@Model.MATRANGSUC" required />
+                        <label for="maloai"><b>Mã Loại</b></label>
+                        <input type="text" name="maloai" value="@Model.MALOAI" required />*@
+                  
+                        <label for="tensp"><b>Tên Trang Sức</b></label>
+                        <input type="text" name="tensp" value="@Model.TENTRANGSUC" required />
+                        <label for="gia"><b>Giá</b></label>
+                        <input type="text" name="gia" value="@Model.GIA" required />
+                        <label for="hinhanh"><b>Hình Ảnh</b></label>
+                        <br />
+                        <input type="file" name="hinhanh" value="@Model.HINHANH" required />
+                        <br />
+                        <label for="ngaydang"><b>Ngày Đăng</b></label>
+                        <input type="date" value="getdate" name="ngaydang" required />
+                        <label for="mota"><b>Mô tả</b></label>
+                        <input  type="text" name="mota" value="@Model.MOTA" required />
+                        <input type="submit" value="Save" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

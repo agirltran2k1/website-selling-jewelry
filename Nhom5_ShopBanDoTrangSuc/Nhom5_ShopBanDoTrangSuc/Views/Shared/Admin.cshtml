@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/bootstrap-4.3.1-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+    <script src="~/front-end-files/popper.min.js"></script>
+    <script src="~/front-end-files/jquery-1-10-2.js"></script>
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="layout-logo">
+            <a href="@Url.Action("Index", "Home")">
+                <img src="~/HinhAnh/GMFJ_Only.png" /></a>
+        </div>
+        <div class="layout-nav" style="font-family:Cambria; width:800px">
+            <ul class="menucap0">
+                <li><a href="@Url.Action("Index")">TRANG CHỦ</a></li>
+                <li><a href="@Url.Action("sp","Admin")">SẢN PHẨM</a></li>
+                <li><a>QUẢN LÝ</a>
+                    <ul class="menucap1">
+                        <li><a href="@Url.Action("TaiKhoan","Admin")">NHÂN VIÊN</a></li>
+                        <li><a href="@Url.Action("KhachHang","Admin")">KHÁCH HÀNG</a></li>
+                        <li><a href="@Url.Action("Loai","Admin")">LOẠI</a></li>
+                        <li><a href="@Url.Action("SanPham","Admin")">SẢN PHẨM</a></li>
+                        <li><a href="@Url.Action("HoaDon","Admin")">HÓA ĐƠN</a></li>
+                    </ul>
+                </li>
+                @{Nhom5_ShopBanDoTrangSuc.Models.TAIKHOAN tk = Session["ss_user"] as Nhom5_ShopBanDoTrangSuc.Models.TAIKHOAN;}
+            @if (tk == null)
+            {
+                 <li><a href="@Url.Action("DangNhap", "Login")">ĐĂNG NHẬP
+                    @*<input type="button" class="btn btn-primary" style="width:130px" value="ĐĂNG NHẬP"/>*@
+                    </a></li>
+                
+                <li><a href="@Url.Action("Index", "Login")">ĐĂNG KÝ
+                    @*<input type="button" class="btn btn-primary" value="ĐĂNG KÝ" />*@</a></li>
+            }
+            else
+            {
+                <li><a href="@Url.Action("dangXuat", "login")" @*role="button" class="btn btn-danger"*@>ĐĂNG XUẤT</a></li>
+            }
+            </ul>
+            <hr />
+        </div>
+       
+    </div>
+    <div class="clearfix"></div>
+    <div class="container">
+        <div class="layout-search">
+            @*<input type="search" id="search" placeholder="Search for names..." />
+            <button class="layout-btn"><i class=" fa fa-search"></i></button>*@
+        </div>
+        @*<div class="layout-login" style="text-align:right">
+            @{Nhom5_ShopBanDoTrangSuc.Models.TAIKHOAN tk = Session["ss_user"] as Nhom5_ShopBanDoTrangSuc.Models.TAIKHOAN;}
+            @if (tk == null)
+            {
+                 <a href="@Url.Action("DangNhap", "Login")">
+                    <input type="button" class="btn btn-primary" style="width:130px" value="ĐĂNG NHẬP"/>
+                    </a>
+                
+                <a href="@Url.Action("Index", "Login")">
+                    <input type="button" class="btn btn-primary" value="ĐĂNG KÝ" /></a>
+            }
+            else{
+                <a href="@Url.Action("dangXuat","login")" role="button" class="btn btn-danger">ĐĂNG XUẤT</a>
+            }
+        </div>*@
+    </div>
+    <div class="clearfix"></div>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "chitietHD";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+@using Nhom5_ShopBanDoTrangSuc.Models;
+@model List<CHITIETHD> 
+
+<h2 style="font-family:Cambria; text-align:center">CHI TIẾT HÓA ĐƠN</h2>
+<br />
+<table class="table" style="font-family:Cambria">
+    <thead>
+        <tr>
+            <th scope="col">Mã SP</th>
+            <th scope="col">Số Lượng</th>
+            <th scope="col">Đơn Giá</th>
+            <th scope="col">Thành Tiền</th>
+            @*<th></th>*@
+            
+           
+    
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var i in Model)
+        {
+            <tr>
+                
+                 <th>@i.MATRANGSUC</th>
+                 <th>@i.SOLUONG</th>
+                 <th>@i.DONGIA</th>
+                <th>@i.THANHTIEN</th>
+                @*<th ><a href="@Url.Action("xoaCTHD", new {mahd=@i.MAHD })"><input class="btn-ad-xoa-kh" type="submit" value="Xóa"/></a></th>*@
+                @*<th ><input class="btn-ad-sua-kh" style="background-color:#f00;" type="submit" value="BAN"/></th>*@
+                
+            </tr>
+        }
+       
+    </tbody>
+</table>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "xemGioHang";
+    Layout = "~/Views/Shared/SanPham.cshtml";
+}
+
+@using Nhom5_ShopBanDoTrangSuc.Models;
+@model List<Item>
+<h2 style="font-family:Cambria; text-align:center">GIỎ HÀNG CỦA TÔI</h2>
+<table class="table" style="min-height:800px; font-family:Cambria">
+    
+    <thead>
+        <tr>
+            <th scope="col">Mã sản phẩm</th>
+            <th scope="col">Tên sản phẩm</th>
+            <th scope="col">Hình ảnh</th>
+            <th scope="col">Số lượng</th>
+            <th scope="col">Đơn giá</th>
+            <th scope="col">Thành tiền</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <th scope="col">@i.masp</th>
+                <th>@i.tensp</th>
+                <th><img src="~/HinhAnh/@i.hinhanh" width="100px"/></th>
+                @using (Html.BeginForm("CapNhatGioHang", "GioHang", new { @MaSP = i.masp }))
+                {
+                <th ><input type="number" min="1" name="txtSoLuong" value="@i.soluong" /></th>
+                <th >@i.gia</th>
+                <th>@i.thanhtien</th>
+                
+                @*<th>@i.soluong</th>
+                <th>@i.gia</th>
+                <th>@String.Format("{0:0,0}", i.thanhtien)</th>*@
+                <th>@Html.ActionLink("Xóa", "xoaSp", new{@MaSP = i.masp})</th>
+                <td><input type ="submit" value="Cập Nhật" class="btn btn-primary" /></td>
+                }
+            </tr>
+            
+        }
+        <tr>
+                <th></th>
+            <th></th>
+            <th></th>
+                <th scope="col" colspan="2">Tổng số lượng: @ViewBag.soluong </th>
+                <th scope="col" colspan="2">Tổng tiền: @ViewBag.tongtien VND</th>
+            <th></th>
+            </tr>
+        <tr>
+            <td></td>
+            <td colspan="6"><a href="@Url.Action("chuanBiDatHang", "GioHang")" role="button" class="btn btn-block btn-success">ĐẶT HÀNG</a></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+

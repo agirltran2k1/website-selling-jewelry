@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QUANLY_BANTRANGSUC" Class="BanTrangSucClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=MAYTINH;Initial Catalog=QUANLY_BANTRANGSUC;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="QUANLY_BANTRANGSUCConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.THELOAI" Member="THELOAIs">
+    <Type Name="THELOAI">
+      <Column Name="MALOAI" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TENLOAI" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ICON_THELOAI" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="DAXOA" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="THELOAI_TRANGSUC" Member="TRANGSUCs" ThisKey="MALOAI" OtherKey="MALOAI" Type="TRANGSUC" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TRANGSUC" Member="TRANGSUCs">
+    <Type Name="TRANGSUC">
+      <Column Name="MATRANGSUC" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MALOAI" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TENTRANGSUC" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="GIA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HINHANH" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="NGAYDANG" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MOTA" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DAXOA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="TRANGSUC_CHITIETHD" Member="CHITIETHDs" ThisKey="MATRANGSUC" OtherKey="MATRANGSUC" Type="CHITIETHD" />
+      <Association Name="THELOAI_TRANGSUC" Member="THELOAI" ThisKey="MALOAI" OtherKey="MALOAI" Type="THELOAI" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CHITIETHD" Member="CHITIETHDs">
+    <Type Name="CHITIETHD">
+      <Column Name="MAHD" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MATRANGSUC" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SOLUONG" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DONGIA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="THANHTIEN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="TRANGSUC_CHITIETHD" Member="TRANGSUC" ThisKey="MATRANGSUC" OtherKey="MATRANGSUC" Type="TRANGSUC" IsForeignKey="true" />
+      <Association Name="HOADON_CHITIETHD" Member="HOADON" ThisKey="MAHD" OtherKey="MAHD" Type="HOADON" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TAIKHOAN" Member="TAIKHOANs">
+    <Type Name="TAIKHOAN">
+      <Column Name="UNAME" Type="System.String" DbType="VarChar(200) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PASS" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="FULL_NAME" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="EMAIL_ADDRESS" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="PHAN_QUYEN" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="DAXOA" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="TAIKHOAN_HOADON" Member="HOADONs" ThisKey="UNAME" OtherKey="MATAIKHOAN" Type="HOADON" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HOADON" Member="HOADONs">
+    <Type Name="HOADON">
+      <Column Name="MAHD" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MATAIKHOAN" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="NGAYLAP" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TONGTIEN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DIACHI" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TINHTRANG" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="NGAYGIAO" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="HOADON_CHITIETHD" Member="CHITIETHDs" ThisKey="MAHD" OtherKey="MAHD" Type="CHITIETHD" />
+      <Association Name="TAIKHOAN_HOADON" Member="TAIKHOAN" ThisKey="MATAIKHOAN" OtherKey="UNAME" Type="TAIKHOAN" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

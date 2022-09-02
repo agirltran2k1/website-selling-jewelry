@@ -1,0 +1,133 @@
+﻿@using Nhom5_ShopBanDoTrangSuc.Models;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="~/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+    <link href="~/bootstrap-4.3.1-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/front-end-files/jquery-1-10-2.js"></script>
+    <script src="~/front-end-files/popper.min.js"></script>
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="layout-logo">
+            <a href="@Url.Action("Index", "Home")">
+                <img src="~/HinhAnh/GMFJ_Only.png" /></a>
+        </div>
+        <div class="layout-nav" style="width:800px; font-family:Cambria;">
+            <ul>
+                <li><a href="@Url.Action("Index", "Home")">TRANG CHỦ</a></li>
+                <li><a href="@Url.Action("SanPham", "Home")">SẢN PHẨM</a></li>
+                <li><a>DANH MỤC</a>
+                    <ul class="menucap1">
+                        <li><a href="@Url.Action("timSPtheoNHAN","Home")">NHẪN</a></li>
+                        <li><a href="@Url.Action("timSPtheoBONGTAI","Home")">BÔNG TAI</a></li>
+                        <li><a href="@Url.Action("timSPtheoDAYCHUYEN","Home")">DÂY CHUYỀN</a></li>
+                        
+                    </ul>
+                </li>
+                @*<li><a href="@Url.Action("LienHe", "Home")">LIÊN HỆ</a></li>*@
+                @{TAIKHOAN tk = Session["ss_user"] as TAIKHOAN;}
+            @if (tk == null)
+            {
+                 <li><a href="@Url.Action("DangNhap", "Login")">ĐĂNG NHẬP
+                    @*<input type="button" class="btn btn-primary" style="width:130px" value="ĐĂNG NHẬP"/>*@
+                    </a></li>
+                
+                <li><a href="@Url.Action("Index", "Login")">ĐĂNG KÝ
+                    @*<input type="button" class="btn btn-primary" value="ĐĂNG KÝ" />*@</a></li>
+            }
+            else
+            {
+                <li><a href="@Url.Action("dangXuat", "login")" @*role="button" class="btn btn-danger"*@>ĐĂNG XUẤT</a></li>
+            }
+            </ul>
+            <hr />
+        </div>
+        <div class="layout-cart">
+            <div class="layout-item">
+
+                <a href="@Url.Action("xemGioHang", "GioHang")">
+                    @{
+                        int sl = 0, tongTien = 0;
+                        List<Item> gioHang = Session["gh"] as List<Item>;
+                        if (gioHang != null)
+                        {
+                            sl = gioHang.Sum(n => n.soluong);
+                            tongTien = gioHang.Sum(n => n.thanhtien);
+                        }
+                    }
+                    <p style="font-family:Cambria"><i class="fa fa-shopping-cart"></i>Giỏ hàng(@sl)<br />
+                    @*    [@string.Format("{0:N0} VND", tongTien)]*@</p>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="container">
+        <div class="layout-search" style="text-align:right">
+          @*  <input type="search" id="search" placeholder="Nhập sản phẩm cần tìm..." />
+            <button class="layout-btn"><i class=" fa fa-search"></i></button>*@
+        </div>
+        @*<div class="layout-login" style="text-align:right">
+            @{TAIKHOAN tk = Session["ss_user"] as TAIKHOAN;}
+            @if (tk == null)
+            {
+                <a href="@Url.Action("DangNhap", "Login")">
+                    <input type="button" class="btn btn-primary" style="width:130px" value="ĐĂNG NHẬP"/>
+                    </a>
+                
+                <a href="@Url.Action("Index", "Login")">
+                    <input type="button" class="btn btn-primary" value="ĐĂNG KÝ" /></a>
+                
+            }
+            else
+            {
+                <a href="@Url.Action("dangXuat", "login")" role="button" class="btn btn-danger">ĐĂNG XUẤT</a>
+            }
+        </div>*@
+    </div>
+    <div class="clearfix"></div>
+    <div class="clear"></div>
+    <div class="container-fluid">
+
+        @RenderBody()
+
+
+    </div>
+
+
+    <div class="clearfix"></div>
+    <div class="container-fluid bg-footer">
+        <div class="container">
+            <div class="footer-item">
+                <i class="fa fa-map-marker"></i>
+                <h2>Address</h2>
+                <p>Thành Phố Hồ Chí Minh</p>
+            </div>
+            <div class="footer-item">
+                <i class="fa  fa-envelope"></i>
+                <h2>Email</h2>
+                <p>agirltran2k1@gmail.com</p>
+            </div>
+            <div class="footer-item">
+                <i class="fa fa-phone-square"></i>
+                <h2>Phone</h2>
+                <p>
+                    +84 9497 11821
+                </p>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

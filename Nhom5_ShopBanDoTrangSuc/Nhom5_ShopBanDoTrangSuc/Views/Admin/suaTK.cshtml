@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "suaTK";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+@using Nhom5_ShopBanDoTrangSuc.Models;
+@model TAIKHOAN
+<div class="container-fluid login-banner" style="font-family:Cambria">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-9">
+                <form action="@Url.Action("xLySuaTK", new {matk=@Model.UNAME })" method="post">
+                    <div class="container login-table">
+                        <h1>CẬP NHẬT NHÂN VIÊN</h1>
+                        <hr />
+                           @*<label for="makhachhang"><b>Mã Khách hàng</b></label>
+                        <input type="text" name="makhachhang" value="@Model.MATAIKHOAN"  required />*@
+                       @* <label for="username"><b>Tài Khoản</b></label>
+                        <input type="text" name="username" value="@Model.UNAME" required />*@
+                        <label for="pass"><b>Mật Khẩu</b></label>
+                        <input type="password" name="pass" value="@Model.PASS" required />
+                        <label for="fullname"><b>Họ Tên</b></label>
+                        <input type="text" name="fullname" value="@Model.FULL_NAME" required />
+                        <label for="email"><b>Email</b></label>
+                        <input type="text" name="email" value="@Model.EMAIL_ADDRESS" required />
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="phanquyen" id="exampleRadios1" value="1" checked>
+                                <label class="form-check-label" for="phanquyen">
+                                    Admin
+                                </label>
+                            </div>
+                            @*<div class="form-check">
+                                <input class="form-check-input" type="radio" name="phanquyen" id="exampleRadios2" value="0">
+                                <label class="form-check-label" for="phanquyen">
+                                    User
+                                </label>
+                            </div>*@
+                        </div>
+                        <input type="submit" value="SAVE" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

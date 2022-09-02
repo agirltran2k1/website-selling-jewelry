@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "themLoai";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<div class="container-fluid login-banner" style="font-family:Cambria">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-9">
+                <form action="@Url.Action("xLyThemLoai")" method="post">
+                    <div class="container login-table">
+                        <h1 style="text-align:center">THÊM LOẠI</h1>
+                        <hr />
+                        <label for="tenloai"><b>Tên loại</b></label>
+                        <input type="text" name="tenloai" required />
+                        <label for="icon"><b>ICON</b></label>
+                        <input type="text" name="icon" required />
+                        <input type="submit" value="SAVE" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

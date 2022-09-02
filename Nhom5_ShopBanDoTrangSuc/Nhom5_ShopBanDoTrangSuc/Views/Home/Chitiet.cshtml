@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Chitiet";
+    Layout = "~/Views/Shared/SanPham.cshtml";
+}
+
+
+@using Nhom5_ShopBanDoTrangSuc.Models;
+@model TRANGSUC
+
+<div class="container minheight" >
+    <hr style="width:100%"/>
+    <div class="row">
+        <div class="col-md-5">
+            <img src="../HinhAnh/@Model.HINHANH"/ width="100%">
+        </div>
+        
+        <div class="col-md-7">
+            @*<p>Mã sản phẩm: @Model.MATRANGSUC</p>*@
+            <h3 style="font-family:Cambria; color:blueviolet">@*Tên sản phẩm: *@@Model.TENTRANGSUC</h3>
+            <p style="font-family:Cambria"><br /><br />Mô Tả: @Model.MOTA</p>
+            <h4 style="font-family:Cambria"><br /><br />Giá: @Model.GIA VND</h4>
+            <br /><br /><br /><br /><br />
+             <a href="@Url.Action("pick", "GioHang", new {masp = @Model.MATRANGSUC })"><input class="btn btn-success" type="submit" style="font-family:Cambria" value="THÊM VÀO GIỎ HÀNG" /></a>
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <a href="@Url.Action("SanPham")"><input class="btn btn-primary" style="font-family:Cambria" type="submit" value="XEM THÊM" /></a>
+        </div>
+    </div>
+</div>

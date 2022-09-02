@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "themSP";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+@using Nhom5_ShopBanDoTrangSuc.Models;
+@model List<THELOAI>
+<div class="container-fluid login-banner" style="font-family:Cambria">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-9">
+                <form action="@Url.Action("xLyThemSP")" method="post">
+                    <div class="container login-table">
+                        <h1>THÊM SẢN PHẨM</h1>
+                        <hr />
+                       
+                        <label for="maloai"><b>Mã Loại</b></label>
+                        <br />
+                        <select name="maloai" id="maloai" style="width:100px">
+                         @foreach (var i in Model)
+                         {
+                             <option value="@i.MALOAI">@i.TENLOAI</option>
+                         }
+                         </select>
+                        
+                            
+                        <br />
+                        <br />
+                        <label for="tensp"><b>Tên SP</b></label>
+                        <input type="text" name="tensp" required />
+                        <label for="gia"><b>Giá</b></label>
+                        <input type="text" name="gia" required />
+                        <label for="hinhanh"><b>Hình Ảnh</b></label>
+                        <input type="text" name="hinhanh" required />
+                        <label for="ngaydang"><b>Ngày Đăng</b></label>
+                        <input type="date" value="getdate"  name="ngaydang" required />
+                        <label for="mota"><b>Mô Tả</b></label>
+                        <input type="text" name="mota" required />
+                        <input type="submit" value="SAVE" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

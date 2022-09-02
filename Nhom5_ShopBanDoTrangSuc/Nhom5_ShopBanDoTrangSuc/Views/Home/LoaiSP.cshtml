@@ -1,0 +1,10 @@
+﻿@using Nhom5_ShopBanDoTrangSuc.Models;
+@model List<THELOAI>
+
+<ul class="list-group"> 
+    <li class="list-group-item list-group-item-warning" ><a href="#"><b style="color:#333;">DANH MỤC</b></a></li>
+    @foreach (var i in Model)
+    {
+        <li class="list-group-item"><a href="@Url.Action("timSPtheoLoai", new {maLoai = @i.MALOAI })" style="color:#333;">@i.TENLOAI</a></li>
+    }
+</ul>

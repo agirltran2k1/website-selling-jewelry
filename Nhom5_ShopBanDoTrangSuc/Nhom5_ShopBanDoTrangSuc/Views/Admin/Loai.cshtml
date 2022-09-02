@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "Loai";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+@using Nhom5_ShopBanDoTrangSuc.Models;
+@model List<THELOAI>
+
+<h2 style="font-family:Cambria; text-align:center">LOẠI</h2>
+<br />
+<table class="table" style="font-family:Cambria">
+    <thead>
+         <tr>
+            <td  colspan="4"><a href="@Url.Action("themLoai")">THÊM MỚI</a></td>
+             <td></td>
+             <td></td>
+        </tr>
+        <tr>
+            <th>Mã Loại</th>
+            <th>Tên Loại</th>
+            <th>ICON</th>
+            @*<th>Đã xóa</th>*@
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <td>@i.MALOAI</td>
+                 <td>@i.TENLOAI</td>
+                 <td>@i.ICON_THELOAI</td>
+                <td></td>
+                 @*<td>@i.DAXOA</td>*@
+                 <th ><a href="@Url.Action("xoaLoai", new {maloai=@i.MALOAI })"><input class="btn-ad-xoa-kh" type="submit" value="Xóa"/></a></th>
+                <th ><a href="@Url.Action("suaLoai", new {maloai=@i.MALOAI })"><input class="btn-ad-sua-kh" type="submit" value="Sửa"/></a></th>
+            </tr>
+        }
+       
+    </tbody>
+</table>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br /><br />
+<br />
+<br />
+<br />
+<br />
+<br />

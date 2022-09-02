@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "timSPtheoLoai";
+    Layout = "~/Views/Shared/SanPham.cshtml";
+}
+
+@using Nhom5_ShopBanDoTrangSuc.Models;
+@model List<TRANGSUC> 
+
+<div class="container-fluid " style="min-height:800px">
+  @foreach (var i in Model)
+  {
+        <div class="item-sanpham">
+        <div class="item-img">
+           <img src="../HinhAnh/@i.HINHANH"/>
+        </div>
+            <div class="item-title">
+               <div class="item-min-title">
+                    <h3>@i.TENTRANGSUC</h3>
+               
+               </div>
+                 <p>@i.GIA VND</p>
+               <div class="btn-group">
+                   <a href="@Url.Action("pick", "GioHang", new {masp = @i.MATRANGSUC })"><input type="submit" value="Thêm vào giỏ"/></a>
+                   <a href="@Url.Action("Chitiet", new {masp = @i.MATRANGSUC })"><input type="submit" value="Xem thêm"/></a>
+               </div>
+            </div>
+    </div>
+  }
+</div>
